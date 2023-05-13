@@ -1,0 +1,27 @@
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+  <h3>
+    <a
+      [title]="product.name + ' detail'"
+      [routerLink]="['/products/', product.id]"
+    >
+      {{ product.name }}
+    </a>
+  </h3>
+  <p>{{ product.price }}</p>
+  <!-- Display the product description if not blank -->
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+  <!-- add Share button -->
+  <button type="button" (click)="share()">Share</button>
+
+  <!-- if product price > 700 ,enable product alert component -->
+  <app-product-alert [product]="product" (notify)="onNotify()">
+  </app-product-alert>
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
